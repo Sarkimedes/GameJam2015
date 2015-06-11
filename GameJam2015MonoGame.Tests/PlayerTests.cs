@@ -55,6 +55,10 @@ namespace GameJam2015MonoGame.Tests
             });
         }
 
-
+        [TestMethod]
+        public void Player_CallsDrawMethodOfGraphicProvider_OnCallingDrawMethod()
+        {
+            
+        }
     }
 }
