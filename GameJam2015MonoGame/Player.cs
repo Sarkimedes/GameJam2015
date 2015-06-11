@@ -7,6 +7,7 @@
         public Player(IInputHandler handler)
         {
             this.handler = handler;
+            this.Speed = 1;
         }
 
         public float XPosition { get; set; }

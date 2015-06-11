@@ -7,7 +7,7 @@ namespace GameJam2015MonoGame.Tests
     public class UnitTest1
     {
         [TestMethod]
-        public void Player_MovesLeftWhenLeftButtonIsPressed()
+        public void Player_MovesLeft_WhenLeftButtonIsPressed()
         {
             IInputHandler handler = new FakeInputHandler();
             handler.LeftPressed = true;
@@ -18,5 +18,20 @@ namespace GameJam2015MonoGame.Tests
 
             Assert.AreEqual(player.XPosition, expectedNewPosition);
         }
+
+        //Player speed is one by default
+        [TestMethod]
+        public void Player_SpeedIsSetToOne_ByDefault()
+        {
+            IInputHandler handler = new FakeInputHandler();
+            var player = new Player(handler);
+
+            float defaultPlayerSpeed = 1;
+            
+            Assert.AreEqual(defaultPlayerSpeed, player.Speed);
+        }
+
+
+        //Arg null when adding null input handler
     }
 }
