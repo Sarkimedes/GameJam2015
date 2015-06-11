@@ -33,5 +33,13 @@ namespace GameJam2015MonoGame.Tests
 
 
         //Arg null when adding null input handler
+        [TestMethod]
+        public void Player_ThrowsArgumentNullException_IfGivenNullInputHandler()
+        {
+            Assert.ThrowsException<ArgumentNullException>(() =>
+            {
+                var player = new Player(null);
+            });
+        }
     }
 }

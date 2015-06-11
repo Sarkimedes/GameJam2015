@@ -1,12 +1,19 @@
-﻿namespace GameJam2015MonoGame
+﻿using System;
+
+namespace GameJam2015MonoGame
 {
     public class Player
     {
-        private IInputHandler handler;
+        private readonly IInputHandler _handler;
 
         public Player(IInputHandler handler)
         {
-            this.handler = handler;
+            if (handler == null)
+            {
+                throw new ArgumentNullException(nameof(handler));
+            }
+
+            this._handler = handler;
             this.Speed = 1;
         }
 
