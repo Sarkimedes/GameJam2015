@@ -134,6 +134,8 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="ApplicationInsights.config" />
+    <None Include="Content\Images\hank.xnb" />
+    <None Include="Content\Images\hankflipped.xnb" />
     <None Include="GameJam2015MonoGame_TemporaryKey.pfx" />
     <None Include="packages.config" />
   </ItemGroup>
