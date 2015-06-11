@@ -9,7 +9,14 @@ namespace GameJam2015MonoGame.Tests
         [TestMethod]
         public void Player_MovesLeftWhenLeftButtonIsPressed()
         {
-           
+            IInputHandler handler = new FakeInputHandler();
+            handler.LeftPressed = true;
+            var player = new Player(handler);
+
+            var expectedNewPosition = player.XPosition - player.Speed;
+            player.Update();
+
+            Assert.AreEqual(player.XPosition, expectedNewPosition);
         }
     }
 }
