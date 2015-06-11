@@ -4,11 +4,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace GameJam2015MonoGame.UnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class PlayerTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void PlayerXLocationIncreasesWhenRightButtonIsPressed()
         {
+            
         }
     }
 }
