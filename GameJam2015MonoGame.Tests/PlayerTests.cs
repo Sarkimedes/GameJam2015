@@ -16,7 +16,19 @@ namespace GameJam2015MonoGame.Tests
             var expectedNewPosition = player.XPosition - player.Speed;
             player.Update();
 
-            Assert.AreEqual(player.XPosition, expectedNewPosition);
+            Assert.AreEqual(expectedNewPosition, player.XPosition);
+        }
+
+        [TestMethod]
+        public void Player_MovesRight_WhenRightButtonIsPressed()
+        {
+            IInputHandler handler = new FakeInputHandler();
+            handler.RightPressed = true;
+            var player = new Player(handler);
+
+            var expectedNewPosition = player.XPosition + player.Speed;
+            player.Update();
+            Assert.AreEqual(expectedNewPosition, player.XPosition);
         }
 
         //Player speed is one by default
@@ -26,7 +38,7 @@ namespace GameJam2015MonoGame.Tests
             IInputHandler handler = new FakeInputHandler();
             var player = new Player(handler);
 
-            float defaultPlayerSpeed = 1;
+            const float defaultPlayerSpeed = 1;
             
             Assert.AreEqual(defaultPlayerSpeed, player.Speed);
         }
@@ -38,8 +50,11 @@ namespace GameJam2015MonoGame.Tests
         {
             Assert.ThrowsException<ArgumentNullException>(() =>
             {
+                // ReSharper disable once UnusedVariable
                 var player = new Player(null);
             });
         }
+
+
     }
 }

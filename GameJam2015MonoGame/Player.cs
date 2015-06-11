@@ -4,16 +4,16 @@ namespace GameJam2015MonoGame
 {
     public class Player
     {
-        private readonly IInputHandler _handler;
+        private readonly IInputHandler _inputHandler;
 
-        public Player(IInputHandler handler)
+        public Player(IInputHandler inputHandler)
         {
-            if (handler == null)
+            if (inputHandler == null)
             {
-                throw new ArgumentNullException(nameof(handler));
+                throw new ArgumentNullException(nameof(inputHandler));
             }
 
-            this._handler = handler;
+            this._inputHandler = inputHandler;
             this.Speed = 1;
         }
 
@@ -22,7 +22,16 @@ namespace GameJam2015MonoGame
 
         public void Update()
         {
-            this.XPosition -= this.Speed;
+            if (this._inputHandler.LeftPressed)
+            {
+                this.XPosition -= this.Speed;
+            }
+
+            if (this._inputHandler.RightPressed)
+            {
+                this.XPosition += this.Speed;
+            }
+            
         }
     }
 }
