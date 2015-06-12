@@ -27,7 +27,7 @@ namespace GameJam2015MonoGame
             this._rng = rng;
             this._limiter = limiter;
             this.IsActive = true;
-
+            this.Speed = 1;
             this.XPosition = this._rng.GetRandomNumber();
         }
 
@@ -35,7 +35,7 @@ namespace GameJam2015MonoGame
         public float YPosition { get; set; }
         public float Height => this._graphicProvider.GraphicHeight;
         public bool IsActive { get; private set; }
-        public double Speed { get; private set; }
+        public float Speed { get; private set; }
 
         public void Update()
         {
@@ -43,6 +43,13 @@ namespace GameJam2015MonoGame
             {
                 this.IsActive = false;
             }
+
+            this.YPosition += this.Speed;
+        }
+
+        public void LoadContent()
+        {
+            this._graphicProvider.LoadContent();
         }
     }
 }

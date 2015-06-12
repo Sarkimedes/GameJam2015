@@ -26,18 +26,17 @@ namespace GameJam2015MonoGame.Tests
         [TestMethod]
         public void FallingBlock_BlockPositionIsTopOfGraphicsDevice_ByDefault()
         {
-            var block = GenerateBlockWithDefaultFakes();
+            var block = GenerateBlockWithFakes();
             var expectedYPosition = block.Height;
             Assert.AreEqual(expectedYPosition, block.YPosition);
         }
 
-        private static FallingBlock GenerateBlockWithDefaultFakes()
+        private static FallingBlock GenerateBlockWithFakes()
         {
-            IRandomNumberProvider rng = new FakeRandomProvider();
+            IRandomNumberProvider fakeRandomProvider = new FakeRandomProvider();
             IGraphicProvider fakeGraphicProvider = new FakeGraphicProvider();
-            IBlockLimiter limiter = new FakeBlockLimiter();
-
-            var block = new FallingBlock(fakeGraphicProvider, rng, limiter);
+            IBlockLimiter fakeBlockLimiter = new FakeBlockLimiter();
+            var block = new FallingBlock(fakeGraphicProvider, fakeRandomProvider, fakeBlockLimiter);
             return block;
         }
 
@@ -103,14 +102,39 @@ namespace GameJam2015MonoGame.Tests
         [TestMethod]
         public void FallingBlock_Falls_WhileUpdating()
         {
-            var block = GenerateBlockWithDefaultFakes();
+            var block = GenerateBlockWithFakes();
             var originalYPosition = block.YPosition;
             var speed = block.Speed;
 
             block.Update();
 
-            var expectedYPosition = originalYPosition - block.Speed;
+            var expectedYPosition = originalYPosition + block.Speed;
             Assert.AreEqual(expectedYPosition, block.YPosition);
+        }
+
+        [TestMethod]
+        public void FallingBlock_SpeedIsSetTo1_ByDefault()
+        {
+            var block = GenerateBlockWithFakes();
+            Assert.AreEqual(1, block.Speed);
+        }
+
+        [TestMethod]
+        public void FallingBlock_CallsLoadContent_FromGraphicsProvider()
+        {
+            var fakeGraphicProvider = new FakeGraphicProvider();
+            var block = GenerateBlockWithFakes(fakeGraphicProvider);
+
+            block.LoadContent();
+            Assert.AreEqual(1, fakeGraphicProvider.TimesLoadContentCalled);
+        }
+
+        private FallingBlock GenerateBlockWithFakes(FakeGraphicProvider fakeGraphicProvider)
+        {
+            IRandomNumberProvider fakeRandomProvider = new FakeRandomProvider();
+            IBlockLimiter fakeBlockLimiter = new FakeBlockLimiter();
+            var block = new FallingBlock(fakeGraphicProvider, fakeRandomProvider, fakeBlockLimiter);
+            return block;
         }
     }
 }
