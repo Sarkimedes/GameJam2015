@@ -130,6 +130,7 @@
     <Compile Include="HankGraphicProvider.cs" />
     <Compile Include="IGraphicProvider.cs" />
     <Compile Include="IInputHandler.cs" />
+    <Compile Include="KeyboardInputHandler.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -138,7 +139,14 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="ApplicationInsights.config" />
+    <Content Include="Content\hank.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\hank.png" />
     <Content Include="Content\Images\hank.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\hankflipped.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Images\hankflipped.xnb">

@@ -11,6 +11,11 @@ namespace GameJam2015MonoGame
         GraphicsDeviceManager _graphics;
         SpriteBatch _spriteBatch;
 
+        private HankGraphicProvider _hankGraphicProvider;
+        private KeyboardInputHandler _inputHandler;
+
+        private Player _player;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -26,6 +31,7 @@ namespace GameJam2015MonoGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            
 
             base.Initialize();
         }
@@ -38,7 +44,10 @@ namespace GameJam2015MonoGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            this._hankGraphicProvider = new HankGraphicProvider(this._spriteBatch, Content);
+            this._inputHandler = new KeyboardInputHandler();
+            this._player = new Player(this._inputHandler, this._hankGraphicProvider);
+            this._player.LoadContent();
             // TODO: use this.Content to load your game content here
         }
 
@@ -59,7 +68,7 @@ namespace GameJam2015MonoGame
         protected override void Update(GameTime gameTime)
         {
             // TODO: Add your update logic here
-
+            this._player.Update();
             base.Update(gameTime);
         }
 
@@ -70,9 +79,9 @@ namespace GameJam2015MonoGame
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
-
+            this._spriteBatch.Begin();
+            this._player.Draw();
+            this._spriteBatch.End();
             base.Draw(gameTime);
         }
     }
