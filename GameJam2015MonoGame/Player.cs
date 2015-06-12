@@ -31,9 +31,9 @@ namespace GameJam2015MonoGame
             this.Facing = Facing.Right;
         }
 
-        public void LoadContent()
+        public void LoadContent(IContentLoader loader)
         {
-            this._graphicProvider.LoadContent();
+            this._graphicProvider.LoadContent(loader);
         }
 
         public float Width => this._graphicProvider.GraphicWidth;

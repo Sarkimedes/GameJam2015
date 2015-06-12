@@ -93,7 +93,8 @@ namespace GameJam2015MonoGame.Tests
             var handler = new FakeInputHandler();
             var player = new Player(handler, provider);
 
-            player.LoadContent();
+            var fakeLoader = new FakeContentLoader();
+            player.LoadContent(fakeLoader);
 
             Assert.AreEqual(1, provider.TimesLoadContentCalled);
         }

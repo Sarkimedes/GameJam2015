@@ -60,7 +60,7 @@ namespace GameJam2015MonoGame
             }
         }
 
-        public void LoadContent()
+        public void LoadContent(IContentLoader loader)
         {
             this._texture = this._contentManager.Load<Texture2D>(TexturePath);
             this._flippedTexture = this._contentManager.Load<Texture2D>(FlippedTexturePath);
@@ -79,7 +79,7 @@ namespace GameJam2015MonoGame
             }
 
             Vector2 drawPosition = new Vector2(xPosition, yPosition);
-            if (this.Facing == Facing.Left)
+            if (this.Facing == Facing.Right)
             {
                 this.SpriteBatch.Draw(this._texture, drawPosition, Color.White);
             }

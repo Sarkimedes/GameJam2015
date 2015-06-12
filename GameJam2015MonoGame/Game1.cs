@@ -60,7 +60,8 @@ namespace GameJam2015MonoGame
             this._hankGraphicProvider = new HankGraphicProvider(this._spriteBatch, Content);
             this._inputHandler = new KeyboardInputHandler();
             this._player = new Player(this._inputHandler, this._hankGraphicProvider);
-            this._player.LoadContent();
+            ContentManagerLoader loader = new ContentManagerLoader(this.Content);
+            this._player.LoadContent(loader);
             this._player.YPosition = this.GraphicsDevice.Viewport.Height - (this._player.Height * 4);
             this._player.XPosition = this.GraphicsDevice.Viewport.Width/2;
             this._player.FacingChanged += (sender, e) =>

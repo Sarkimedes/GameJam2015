@@ -30,5 +30,15 @@ namespace GameJam2015MonoGame.Tests
                 blockGraphicProvider.Draw(0, 0, null);
             });
         }
+
+        [TestMethod]
+        public void BlockGraphicProvider_CallContentLoaderLoadMethod_WhenLoading()
+        {
+            var blockGraphicProvider = new BlockGraphicProvider();
+            IContentLoader loader = new FakeContentLoader();
+            blockGraphicProvider.LoadContent(loader);
+
+            Assert.AreEqual(1, ((FakeContentLoader)loader).TimesLoadCalled);
+        }
     }
 }

@@ -47,9 +47,9 @@ namespace GameJam2015MonoGame
             this.YPosition += this.Speed;
         }
 
-        public void LoadContent()
+        public void LoadContent(IContentLoader loader)
         {
-            this._graphicProvider.LoadContent();
+            this._graphicProvider.LoadContent(loader);
         }
 
         public void Draw(IGraphicDrawer drawer)

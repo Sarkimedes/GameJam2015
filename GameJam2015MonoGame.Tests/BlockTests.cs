@@ -114,9 +114,10 @@ namespace GameJam2015MonoGame.Tests
         public void FallingBlock_CallsLoadContent_FromGraphicsProvider()
         {
             var fakeGraphicProvider = new FakeGraphicProvider();
+            var fakeContentLoader = new FakeContentLoader();
             var block = GenerateBlockWithFakes(fakeGraphicProvider);
 
-            block.LoadContent();
+            block.LoadContent(fakeContentLoader);
             Assert.AreEqual(1, fakeGraphicProvider.TimesLoadContentCalled);
         }
 

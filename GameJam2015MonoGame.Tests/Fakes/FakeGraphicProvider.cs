@@ -16,7 +16,7 @@
         public float GraphicWidth => FakeGraphicWidth;
         public float GraphicHeight => FakeGraphicHeight;
 
-        public void LoadContent()
+        public void LoadContent(IContentLoader loader)
         {
             TimesLoadContentCalled++;
         }

@@ -15,9 +15,9 @@ namespace GameJam2015MonoGame
 
         public float GraphicWidth => this._texture2D.Width;
         public float GraphicHeight => this._texture2D.Height;
-        public void LoadContent()
+        public void LoadContent(IContentLoader loader)
         {
-            
+            loader.LoadContent<Texture2D>(TexturePath);
         }
 
         public void Draw(float xPosition, float yPosition, IGraphicDrawer drawer)

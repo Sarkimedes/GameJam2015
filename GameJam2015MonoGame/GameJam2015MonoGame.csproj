@@ -124,6 +124,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="BlockGraphicProvider.cs" />
+    <Compile Include="ContentManagerLoader.cs" />
     <Compile Include="Facing.cs" />
     <Compile Include="FacingChangedEventArgs.cs" />
     <Compile Include="FallingBlock.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="HankGraphicProvider.cs" />
     <Compile Include="IBlockLimiter.cs" />
+    <Compile Include="IContentLoader.cs" />
     <Compile Include="IGraphicDrawer.cs" />
     <Compile Include="IGraphicProvider.cs" />
     <Compile Include="IInputHandler.cs" />

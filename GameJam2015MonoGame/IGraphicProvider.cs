@@ -20,7 +20,7 @@ namespace GameJam2015MonoGame
         /// </value>
         float GraphicHeight { get; }
 
-        void LoadContent();
+        void LoadContent(IContentLoader loader);
 
         void Draw(float xPosition, float yPosition, IGraphicDrawer drawer);
     }
