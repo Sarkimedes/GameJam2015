@@ -69,7 +69,8 @@ namespace GameJam2015MonoGame.Tests
             var fakeGraphicProvider = new FakeGraphicProvider();
             var player = new Player(fakeHandler, fakeGraphicProvider);
 
-            player.Draw();
+            var fakeDrawer = new FakeGraphicDrawer();
+            player.Draw(fakeDrawer);
 
             Assert.AreEqual(1, fakeGraphicProvider.TimesDrawCalled);
         }

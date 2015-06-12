@@ -95,9 +95,14 @@ namespace GameJam2015MonoGame
             }
         }
 
-        public void Draw()
+        public void Draw(IGraphicDrawer drawer)
         {
-            this._graphicProvider.Draw(this.XPosition, this.YPosition, null);
+            if (drawer == null)
+            {
+                throw new ArgumentNullException(nameof(drawer));
+            }
+
+            this._graphicProvider.Draw(this.XPosition, this.YPosition, drawer);
         }
 
         public event EventHandler<FacingChangedEventArgs> FacingChanged;

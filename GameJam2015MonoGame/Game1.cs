@@ -97,7 +97,8 @@ namespace GameJam2015MonoGame
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             this._spriteBatch.Begin();
-            this._player.Draw();
+            var drawer = new SpriteBatchGraphicDrawer(this._spriteBatch);
+            this._player.Draw(drawer);
             this._spriteBatch.End();
             base.Draw(gameTime);
         }
