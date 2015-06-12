@@ -66,7 +66,7 @@ namespace GameJam2015MonoGame
             this._flippedTexture = this._contentManager.Load<Texture2D>(FlippedTexturePath);
         }
 
-        public void Draw(float xPosition, float yPosition)
+        public void Draw(float xPosition, float yPosition, IGraphicDrawer drawer)
         {
             if (this.SpriteBatch == null)
             {

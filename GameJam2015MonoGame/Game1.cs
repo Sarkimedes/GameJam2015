@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace GameJam2015MonoGame
@@ -11,15 +12,24 @@ namespace GameJam2015MonoGame
         GraphicsDeviceManager _graphics;
         SpriteBatch _spriteBatch;
 
+        /// <summary>
+        /// The number of blocks on screen
+        /// </summary>
+        private static readonly int NumberOfBlocks = 10;
+
         private HankGraphicProvider _hankGraphicProvider;
         private KeyboardInputHandler _inputHandler;
 
         private Player _player;
 
+        private List<FallingBlock> _blocks; 
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            this._blocks = new List<FallingBlock>();
         }
 
         /// <summary>
@@ -31,7 +41,10 @@ namespace GameJam2015MonoGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            
+            for (int i = 0; i < NumberOfBlocks; ++i)
+            {
+                //Add blocks in here
+            }
 
             base.Initialize();
         }

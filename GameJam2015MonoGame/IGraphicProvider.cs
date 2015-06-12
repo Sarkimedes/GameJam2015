@@ -22,6 +22,6 @@ namespace GameJam2015MonoGame
 
         void LoadContent();
 
-        void Draw(float xPosition, float yPosition);
+        void Draw(float xPosition, float yPosition, IGraphicDrawer drawer);
     }
 }

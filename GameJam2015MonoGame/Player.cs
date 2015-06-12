@@ -97,7 +97,7 @@ namespace GameJam2015MonoGame
 
         public void Draw()
         {
-            this._graphicProvider.Draw(this.XPosition, this.YPosition);
+            this._graphicProvider.Draw(this.XPosition, this.YPosition, null);
         }
 
         public event EventHandler<FacingChangedEventArgs> FacingChanged;

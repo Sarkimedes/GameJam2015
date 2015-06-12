@@ -21,7 +21,7 @@
             TimesLoadContentCalled++;
         }
 
-        public void Draw(float xPosition, float yPosition)
+        public void Draw(float xPosition, float yPosition, IGraphicDrawer drawer)
         {
             TimesDrawCalled++;
         }

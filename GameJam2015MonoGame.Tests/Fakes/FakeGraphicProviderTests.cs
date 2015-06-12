@@ -16,7 +16,7 @@ namespace GameJam2015MonoGame.Tests.Fakes
         public void FakeGraphicProvider_CallsToDrawAre1_IfDrawCalledOnce()
         {
             var fakeGraphicProvider = new FakeGraphicProvider();
-            fakeGraphicProvider.Draw(0, 0);
+            fakeGraphicProvider.Draw(0, 0, null);
             Assert.AreEqual(1, fakeGraphicProvider.TimesDrawCalled);
         }
 
@@ -24,8 +24,8 @@ namespace GameJam2015MonoGame.Tests.Fakes
         public void FakeGraphicProvider_CallsToDrawAre2_IfDrawCalledTwice()
         {
             var fakeGraphicProvider = new FakeGraphicProvider();
-            fakeGraphicProvider.Draw(0, 0);
-            fakeGraphicProvider.Draw(0, 0);
+            fakeGraphicProvider.Draw(0, 0, null);
+            fakeGraphicProvider.Draw(0, 0, null);
             Assert.AreEqual(2, fakeGraphicProvider.TimesDrawCalled);
         }
     }

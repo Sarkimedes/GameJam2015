@@ -115,7 +115,9 @@
     <SDKReference Include="TestPlatform.Universal, Version=$(UnitTestPlatformVersion)" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlockGraphicProviderTests.cs" />
     <Compile Include="BlockTests.cs" />
+    <Compile Include="Fakes\FakeGraphicDrawer.cs" />
     <Compile Include="Fakes\FakeBlockLimiter.cs" />
     <Compile Include="Fakes\FakeGraphicProvider.cs" />
     <Compile Include="Fakes\FakeGraphicProviderTests.cs" />
