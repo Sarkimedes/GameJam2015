@@ -6,12 +6,15 @@
         {
         }
 
+        public static float FakeGraphicWidth { get; set; }
+        public static float FakeGraphicHeight { get; set; }
+
         public int TimesDrawCalled { get; private set; }
 
         public int TimesLoadContentCalled { get; private set; }
 
-        public float GraphicWidth { get; }
-        public float GraphicHeight { get; }
+        public float GraphicWidth => FakeGraphicWidth;
+        public float GraphicHeight => FakeGraphicHeight;
 
         public void LoadContent()
         {
