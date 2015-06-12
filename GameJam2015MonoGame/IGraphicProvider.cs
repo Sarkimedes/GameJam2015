@@ -1,7 +1,11 @@
-﻿namespace GameJam2015MonoGame
+﻿using Microsoft.Xna.Framework;
+
+namespace GameJam2015MonoGame
 {
     public interface IGraphicProvider
     {
-        void Draw();
+        void LoadContent();
+
+        void Draw(float xPosition, float yPosition);
     }
 }

@@ -81,5 +81,17 @@ namespace GameJam2015MonoGame.Tests
                 var player = new Player(handler, null);
             });
         }
+
+        [TestMethod]
+        public void Player_CallsLoadMethodOfGraphicProvider_OnCallingDrawMethod()
+        {
+            FakeGraphicProvider provider = new FakeGraphicProvider();
+            var handler = new FakeInputHandler();
+            var player = new Player(handler, provider);
+
+            player.LoadContent();
+
+            Assert.AreEqual(1, provider.TimesLoadContentCalled);
+        }
     }
 }

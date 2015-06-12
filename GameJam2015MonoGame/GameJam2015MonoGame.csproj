@@ -127,6 +127,7 @@
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game1.cs" />
+    <Compile Include="HankGraphicProvider.cs" />
     <Compile Include="IGraphicProvider.cs" />
     <Compile Include="IInputHandler.cs" />
     <Compile Include="Player.cs" />

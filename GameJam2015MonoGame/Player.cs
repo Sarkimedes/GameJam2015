@@ -24,7 +24,15 @@ namespace GameJam2015MonoGame
             this.Speed = 1;
         }
 
+        public void LoadContent()
+        {
+            this._graphicProvider.LoadContent();
+        }
+
         public float XPosition { get; set; }
+
+        public float YPosition { get; set; }
+
         public float Speed { get; set; }
 
         public void Update()
@@ -38,12 +46,13 @@ namespace GameJam2015MonoGame
             {
                 this.XPosition += this.Speed;
             }
-            
         }
+
+
 
         public void Draw()
         {
-            this._graphicProvider.Draw();
+            this._graphicProvider.Draw(this.XPosition, this.YPosition);
         }
     }
 }

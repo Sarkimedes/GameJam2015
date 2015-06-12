@@ -8,7 +8,14 @@
 
         public int TimesDrawCalled { get; private set; }
 
-        public void Draw()
+        public int TimesLoadContentCalled { get; private set; }
+
+        public void LoadContent()
+        {
+            TimesLoadContentCalled++;
+        }
+
+        public void Draw(float xPosition, float yPosition)
         {
             TimesDrawCalled++;
         }
