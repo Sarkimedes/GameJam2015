@@ -12,9 +12,11 @@ namespace GameJam2015MonoGame
 {
     internal class HankGraphicProvider : IGraphicProvider
     {
-        private static readonly string TexturePath = "Images\\hankflipped.png";
+        private static readonly string TexturePath = "Images\\hank.png";
+        private static readonly string FlippedTexturePath = "Images\\hankflipped.png";
 
         private Texture2D _texture;
+        private Texture2D _flippedTexture;
         private ContentManager _contentManager;
 
         internal HankGraphicProvider(SpriteBatch spriteBatch, ContentManager contentManager)
@@ -24,10 +26,12 @@ namespace GameJam2015MonoGame
                 throw new ArgumentNullException(nameof(spriteBatch));
             }
             if (contentManager == null) throw new ArgumentNullException(nameof(contentManager));
-
+            this.Facing = Facing.Left;
             this.SpriteBatch = spriteBatch;
             this._contentManager = contentManager;
         }
+
+        public Facing Facing { get; set; }
 
         public SpriteBatch SpriteBatch { get; set; }
 
@@ -59,6 +63,7 @@ namespace GameJam2015MonoGame
         public void LoadContent()
         {
             this._texture = this._contentManager.Load<Texture2D>(TexturePath);
+            this._flippedTexture = this._contentManager.Load<Texture2D>(FlippedTexturePath);
         }
 
         public void Draw(float xPosition, float yPosition)
@@ -74,7 +79,19 @@ namespace GameJam2015MonoGame
             }
 
             Vector2 drawPosition = new Vector2(xPosition, yPosition);
-            this.SpriteBatch.Draw(this._texture, drawPosition, Color.White);
+            if (this.Facing == Facing.Left)
+            {
+                this.SpriteBatch.Draw(this._texture, drawPosition, Color.White);
+            }
+            else
+            {
+                this.SpriteBatch.Draw(this._flippedTexture, drawPosition, Color.White);
+            }
+        }
+
+        public void HandlePlayerFacingChange(object sender, FacingChangedEventArgs e)
+        {
+            this.Facing = e.NewFacing;
         }
     }
 }
