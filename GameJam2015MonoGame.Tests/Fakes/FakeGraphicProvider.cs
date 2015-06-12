@@ -1,4 +1,6 @@
-﻿using GameJam2015MonoGame.GraphicProviders;
+﻿using GameJam2015MonoGame.ContentLoaders;
+using GameJam2015MonoGame.GraphicDrawers;
+using GameJam2015MonoGame.GraphicProviders;
 
 namespace GameJam2015MonoGame.Tests.Fakes
 {

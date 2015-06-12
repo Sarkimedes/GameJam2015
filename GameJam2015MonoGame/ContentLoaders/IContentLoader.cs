@@ -1,6 +1,4 @@
-﻿using Windows.Devices.Bluetooth.Advertisement;
-
-namespace GameJam2015MonoGame
+﻿namespace GameJam2015MonoGame.ContentLoaders
 {
     public interface IContentLoader
     {

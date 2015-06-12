@@ -1,8 +1,10 @@
 ﻿using System;
-using Windows.ApplicationModel.VoiceCommands;
+using GameJam2015MonoGame.ContentLoaders;
+using GameJam2015MonoGame.GraphicDrawers;
 using GameJam2015MonoGame.GraphicProviders;
+using GameJam2015MonoGame.Utility;
 
-namespace GameJam2015MonoGame
+namespace GameJam2015MonoGame.Actors.Player
 {
     public class Player
     {

@@ -1,4 +1,6 @@
-﻿namespace GameJam2015MonoGame.Tests.Fakes
+﻿using GameJam2015MonoGame.Actors.Block;
+
+namespace GameJam2015MonoGame.Tests.Fakes
 {
     public class FakeBlockLimiter : IBlockLimiter
     {

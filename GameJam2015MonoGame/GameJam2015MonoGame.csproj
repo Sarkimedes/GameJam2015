@@ -124,27 +124,27 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="GraphicProviders\BlockGraphicProvider.cs" />
-    <Compile Include="ContentManagerLoader.cs" />
-    <Compile Include="Facing.cs" />
-    <Compile Include="FacingChangedEventArgs.cs" />
-    <Compile Include="FallingBlock.cs" />
+    <Compile Include="ContentLoaders\ContentManagerLoader.cs" />
+    <Compile Include="Actors\Player\Facing.cs" />
+    <Compile Include="Actors\Player\FacingChangedEventArgs.cs" />
+    <Compile Include="Actors\Block\FallingBlock.cs" />
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game1.cs" />
     <Compile Include="GraphicProviders\HankGraphicProvider.cs" />
-    <Compile Include="IBlockLimiter.cs" />
-    <Compile Include="IContentLoader.cs" />
-    <Compile Include="IGraphicDrawer.cs" />
+    <Compile Include="Actors\Block\IBlockLimiter.cs" />
+    <Compile Include="ContentLoaders\IContentLoader.cs" />
+    <Compile Include="GraphicDrawers\IGraphicDrawer.cs" />
     <Compile Include="GraphicProviders\IGraphicProvider.cs" />
-    <Compile Include="IInputHandler.cs" />
-    <Compile Include="IRandomNumberProvider.cs" />
-    <Compile Include="KeyboardInputHandler.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Utility\IInputHandler.cs" />
+    <Compile Include="Utility\IRandomNumberProvider.cs" />
+    <Compile Include="Utility\KeyboardInputHandler.cs" />
+    <Compile Include="Actors\Player\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BlockPositionRandomizer.cs" />
-    <Compile Include="SpriteBatchGraphicDrawer.cs" />
-    <Compile Include="ViewportBlockLimiter.cs" />
+    <Compile Include="Utility\BlockPositionRandomizer.cs" />
+    <Compile Include="GraphicDrawers\SpriteBatchGraphicDrawer.cs" />
+    <Compile Include="Actors\Block\ViewportBlockLimiter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -191,9 +191,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Actors\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

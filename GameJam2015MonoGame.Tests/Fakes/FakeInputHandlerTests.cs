@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+﻿using GameJam2015MonoGame.Utility;
+using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 
 namespace GameJam2015MonoGame.Tests.Fakes
 {

@@ -1,5 +1,7 @@
 ﻿using System;
 using Windows.UI.Notifications;
+using GameJam2015MonoGame.ContentLoaders;
+using GameJam2015MonoGame.GraphicDrawers;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace GameJam2015MonoGame.GraphicProviders

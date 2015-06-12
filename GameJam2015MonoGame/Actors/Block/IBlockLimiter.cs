@@ -1,4 +1,4 @@
-﻿namespace GameJam2015MonoGame
+﻿namespace GameJam2015MonoGame.Actors.Block
 {
     public interface IBlockLimiter
     {

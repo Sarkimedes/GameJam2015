@@ -1,4 +1,7 @@
-﻿namespace GameJam2015MonoGame.GraphicProviders
+﻿using GameJam2015MonoGame.ContentLoaders;
+using GameJam2015MonoGame.GraphicDrawers;
+
+namespace GameJam2015MonoGame.GraphicProviders
 {
     public interface IGraphicProvider
     {

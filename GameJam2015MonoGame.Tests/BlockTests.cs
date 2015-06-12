@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameJam2015MonoGame.Actors.Block;
 using GameJam2015MonoGame.GraphicProviders;
 using GameJam2015MonoGame.Tests.Fakes;
+using GameJam2015MonoGame.Utility;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 
 namespace GameJam2015MonoGame.Tests

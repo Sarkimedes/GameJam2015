@@ -1,4 +1,7 @@
 ﻿using System;
+using GameJam2015MonoGame.Actors.Player;
+using GameJam2015MonoGame.ContentLoaders;
+using GameJam2015MonoGame.GraphicDrawers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;

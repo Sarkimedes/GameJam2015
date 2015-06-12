@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Content;
 
-namespace GameJam2015MonoGame
+namespace GameJam2015MonoGame.ContentLoaders
 {
     internal class ContentManagerLoader : IContentLoader
     {

@@ -1,4 +1,4 @@
-﻿namespace GameJam2015MonoGame
+﻿namespace GameJam2015MonoGame.Utility
 {
     public interface IInputHandler
     {

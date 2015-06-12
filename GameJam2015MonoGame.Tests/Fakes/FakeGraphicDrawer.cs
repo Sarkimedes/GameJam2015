@@ -1,5 +1,6 @@
 ﻿using Windows.UI;
 using System;
+using GameJam2015MonoGame.GraphicDrawers;
 
 namespace GameJam2015MonoGame.Tests.Fakes
 {

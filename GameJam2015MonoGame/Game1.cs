@@ -1,6 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GameJam2015MonoGame.Actors.Block;
+using GameJam2015MonoGame.Actors.Player;
+using GameJam2015MonoGame.ContentLoaders;
+using GameJam2015MonoGame.GraphicDrawers;
 using GameJam2015MonoGame.GraphicProviders;
+using GameJam2015MonoGame.Utility;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
