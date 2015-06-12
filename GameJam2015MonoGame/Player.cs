@@ -4,8 +4,12 @@ namespace GameJam2015MonoGame
 {
     public class Player
     {
+        private static readonly float JumpHeightLimit = 20;
+
         private readonly IInputHandler _inputHandler;
         private readonly IGraphicProvider _graphicProvider;
+        private bool _isJumping;
+        private float _jumpStartHeight;
 
         public Player(IInputHandler inputHandler, IGraphicProvider graphicProvider)
         {
@@ -47,7 +51,13 @@ namespace GameJam2015MonoGame
                 this.XPosition += this.Speed;
             }
 
-            if (this._inputHandler.JumpPressed)
+            if (this._inputHandler.JumpPressed && !this._isJumping)
+            {
+                this._isJumping = true;
+                this._jumpStartHeight = this.YPosition;
+            }
+
+            if (this._isJumping && this.YPosition > (this._jumpStartHeight - JumpHeightLimit))
             {
                 this.YPosition -= this.Speed*2;
             }

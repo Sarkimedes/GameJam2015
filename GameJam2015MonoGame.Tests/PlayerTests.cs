@@ -118,7 +118,37 @@ namespace GameJam2015MonoGame.Tests
         [TestMethod]
         public void Player_YPositionContinuesIncreasing_AfterJumpIsReleased()
         {
-            
+            var fakeInputHandler = new FakeInputHandler();
+            fakeInputHandler.JumpPressed = true;
+            var fakeGraphicProvider = new FakeGraphicProvider();
+            var player = new Player(fakeInputHandler, fakeGraphicProvider);
+            var startingPosition = player.YPosition;
+            var jumpSpeed = player.Speed*2;
+
+            player.Update();
+            fakeInputHandler.JumpPressed = false;
+            player.Update();
+
+            var expectedPosition = startingPosition - jumpSpeed*2;
+            var currentPosition = player.YPosition;
+            Assert.AreEqual(expectedPosition, currentPosition);
+        }
+
+        [TestMethod]
+        public void Player_YPositionDoesNotIncrease_AfterJumpingAndHittingALimit()
+        {
+            const int maxJumpHeight = -20;
+
+            var simulator = new PlayerJumpSimulator();
+
+            simulator.JumpUntilLimit(maxJumpHeight);
+            var player = simulator.Player;
+            var speed = player.Speed*2;
+            var oldPosition = player.YPosition;
+            player.Update();
+
+            var currentPosition = player.YPosition;
+            Assert.AreEqual(oldPosition, currentPosition);
         }
     }
 }

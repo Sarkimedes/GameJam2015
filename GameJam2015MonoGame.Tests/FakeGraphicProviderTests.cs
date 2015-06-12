@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 namespace GameJam2015MonoGame.Tests
 {
     [TestClass]
-    class FakeGraphicProviderTests
+    public class FakeGraphicProviderTests
     {
         [TestMethod]
         public void FakeGraphicProvider_CallsToDrawAre0ByDefault()
@@ -29,6 +29,7 @@ namespace GameJam2015MonoGame.Tests
         public void FakeGraphicProvider_CallsToDrawAre2_IfDrawCalledTwice()
         {
             var fakeGraphicProvider = new FakeGraphicProvider();
+            fakeGraphicProvider.Draw(0, 0);
             fakeGraphicProvider.Draw(0, 0);
             Assert.AreEqual(2, fakeGraphicProvider.TimesDrawCalled);
         }
