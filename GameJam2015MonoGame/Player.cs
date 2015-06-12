@@ -69,7 +69,7 @@ namespace GameJam2015MonoGame
 
             }
 
-            if (this._inputHandler.JumpPressed && !this._isJumping)
+            if (this._inputHandler.JumpPressed && !this._isJumping && !this._isDropping)
             {
                 this._isJumping = true;
                 this._jumpStartHeight = this.YPosition;
