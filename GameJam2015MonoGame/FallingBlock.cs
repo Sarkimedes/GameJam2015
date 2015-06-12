@@ -27,7 +27,7 @@ namespace GameJam2015MonoGame
             this._rng = rng;
             this._limiter = limiter;
             this.IsActive = true;
-            this.Speed = 1;
+            this.Speed = this._rng.GetRandomFloat() + 1;
             this.XPosition = this._rng.GetRandomNumber(400, 900);
             this.YPosition = this._rng.GetRandomNumber(100, 200);
         }
