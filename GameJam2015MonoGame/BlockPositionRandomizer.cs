@@ -8,10 +8,15 @@ namespace GameJam2015MonoGame
 {
     internal class BlockPositionRandomizer : IRandomNumberProvider
     {
-        public float GetRandomNumber()
+        private static readonly Random Random = new Random();
+        public float GetRandomNumber(int inclusiveMin, int exclusiveMax)
         {
-            var rand = new Random();
-            return rand.Next(300, 600);
+            return Random.Next(inclusiveMin, exclusiveMax);
+        }
+
+        public float GetRandomFloat()
+        {
+            return (float)Random.NextDouble();
         }
     }
 }

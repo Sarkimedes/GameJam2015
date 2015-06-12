@@ -17,17 +17,18 @@ namespace GameJam2015MonoGame.Tests
             IRandomNumberProvider rng = new FakeRandomProvider();
             IGraphicProvider fakeGraphicProvider = new FakeGraphicProvider();
             IBlockLimiter limiter = new FakeBlockLimiter();
-            var number = rng.GetRandomNumber();
+            var number = rng.GetRandomNumber(0,0);
 
             var block = new FallingBlock(fakeGraphicProvider, rng, limiter);
             Assert.AreEqual(number, block.XPosition);
         }
 
         [TestMethod]
-        public void FallingBlock_BlockPositionIsTopOfGraphicsDevice_ByDefault()
+        public void FallingBlock_VerticalBlockPositionIsRandomised_ByDefault()
         {
-            var block = GenerateBlockWithFakes();
-            var expectedYPosition = block.Height;
+            var random = new FakeRandomProvider();
+            var block = GenerateBlockWithFakes(random);
+            var expectedYPosition = block.Height + FakeRandomProvider.DefaultValue;
             Assert.AreEqual(expectedYPosition, block.YPosition);
         }
 
@@ -143,6 +144,14 @@ namespace GameJam2015MonoGame.Tests
         private FallingBlock GenerateBlockWithFakes(FakeGraphicProvider fakeGraphicProvider)
         {
             IRandomNumberProvider fakeRandomProvider = new FakeRandomProvider();
+            IBlockLimiter fakeBlockLimiter = new FakeBlockLimiter();
+            var block = new FallingBlock(fakeGraphicProvider, fakeRandomProvider, fakeBlockLimiter);
+            return block;
+        }
+
+        private FallingBlock GenerateBlockWithFakes(FakeRandomProvider fakeRandomProvider)
+        {
+            IGraphicProvider fakeGraphicProvider = new FakeGraphicProvider();
             IBlockLimiter fakeBlockLimiter = new FakeBlockLimiter();
             var block = new FallingBlock(fakeGraphicProvider, fakeRandomProvider, fakeBlockLimiter);
             return block;
