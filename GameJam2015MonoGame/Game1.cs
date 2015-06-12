@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -44,6 +45,11 @@ namespace GameJam2015MonoGame
             for (int i = 0; i < NumberOfBlocks; ++i)
             {
                 //Add blocks in here
+                var block = new FallingBlock(
+                    new BlockGraphicProvider(), 
+                    new BlockPositionRandomizer(),
+                    new ViewportBlockLimiter(this.GraphicsDevice.Viewport));
+                this._blocks.Add(block);
             }
 
             base.Initialize();
@@ -66,6 +72,10 @@ namespace GameJam2015MonoGame
             this._player.XPosition = this.GraphicsDevice.Viewport.Width/2;
             this._player.FacingChanged += (sender, e) =>
                 this._hankGraphicProvider.HandlePlayerFacingChange(sender, e);
+            foreach (var block in _blocks)
+            {
+                block.LoadContent(loader);
+            }
             // TODO: use this.Content to load your game content here
         }
 
@@ -87,6 +97,10 @@ namespace GameJam2015MonoGame
         {
             // TODO: Add your update logic here
             this._player.Update();
+            foreach (var item in this._blocks)
+            {
+                item.Update();
+            }
             base.Update(gameTime);
         }
 
@@ -99,6 +113,10 @@ namespace GameJam2015MonoGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
             this._spriteBatch.Begin();
             var drawer = new SpriteBatchGraphicDrawer(this._spriteBatch);
+            foreach (var block in _blocks)
+            {
+                block.Draw(drawer);
+            }
             this._player.Draw(drawer);
             this._spriteBatch.End();
             base.Draw(gameTime);

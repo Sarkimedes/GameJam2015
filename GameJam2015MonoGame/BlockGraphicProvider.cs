@@ -5,7 +5,7 @@ namespace GameJam2015MonoGame
 {
     public class BlockGraphicProvider : IGraphicProvider
     {
-        private static readonly string TexturePath = "Images\\block.xnb";
+        private static readonly string TexturePath = "Images\\block";
 
         private Texture2D _texture2D;
 
@@ -22,7 +22,7 @@ namespace GameJam2015MonoGame
                 throw new ArgumentNullException(nameof(loader));
             }
 
-            loader.LoadContent<Texture2D>(TexturePath);
+            this._texture2D = loader.LoadContent<Texture2D>(TexturePath);
         }
 
         public void Draw(float xPosition, float yPosition, IGraphicDrawer drawer)
@@ -31,18 +31,11 @@ namespace GameJam2015MonoGame
             {
                 throw new ArgumentNullException(nameof(drawer));
             }
-            drawer.Draw(xPosition, yPosition);
-        }
-
-        public void Draw(float xPosition, float yPosition, SpriteBatchGraphicDrawer drawer)
-        {
-            if (drawer == null)
+            if (drawer is SpriteBatchGraphicDrawer)
             {
-                throw new ArgumentNullException(nameof(drawer));
+                ((SpriteBatchGraphicDrawer) drawer).TextureToDraw = this._texture2D;
             }
-
-            drawer.TextureToDraw = this._texture2D;
-            this.Draw(xPosition, yPosition, (IGraphicDrawer)drawer);
+            drawer.Draw(xPosition, yPosition);
         }
     }
 }

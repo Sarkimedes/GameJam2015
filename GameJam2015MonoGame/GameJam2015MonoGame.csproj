@@ -142,7 +142,9 @@
     <Compile Include="KeyboardInputHandler.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BlockPositionRandomizer.cs" />
     <Compile Include="SpriteBatchGraphicDrawer.cs" />
+    <Compile Include="ViewportBlockLimiter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -162,7 +164,9 @@
     <Content Include="Content\Images\hankflipped.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Content\Images\block.xnb" />
+    <Content Include="Content\Images\block.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="GameJam2015MonoGame_TemporaryKey.pfx" />
     <None Include="packages.config" />
   </ItemGroup>
