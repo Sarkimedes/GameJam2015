@@ -263,5 +263,32 @@ namespace GameJam2015MonoGame.Tests
         }
 
         //Does not raise event when facing doesn't change
+        [TestMethod]
+        public void Player_DoesNotRaiseEvent_IfFacingDoesNotChangeFromLeft()
+        {
+            var fakeInputHandler = new FakeInputHandler();
+            var fakeGraphicsProvider = new FakeGraphicProvider();
+            var player = new Player(fakeInputHandler, fakeGraphicsProvider);
+            fakeInputHandler.LeftPressed = true;
+            player.Update();
+            bool eventRaised = false;
+            player.FacingChanged += (sender, e) => eventRaised = true;
+            player.Update();
+            Assert.IsFalse(eventRaised);
+        }
+
+        [TestMethod]
+        public void Player_DoesNotRaiseEvent_IfFacingDoesNotChangeFromRight()
+        {
+            var fakeInputHandler = new FakeInputHandler();
+            var fakeGraphicsProvider = new FakeGraphicProvider();
+            var player = new Player(fakeInputHandler, fakeGraphicsProvider);
+            fakeInputHandler.RightPressed = true;
+            player.Update();
+            bool eventRaised = false;
+            player.FacingChanged += (sender, e) => eventRaised = true;
+            player.Update();
+            Assert.IsFalse(eventRaised);
+        }
     }
 }
