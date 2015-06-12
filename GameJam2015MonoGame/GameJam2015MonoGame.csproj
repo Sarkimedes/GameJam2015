@@ -125,6 +125,7 @@
     </Compile>
     <Compile Include="Facing.cs" />
     <Compile Include="FacingChangedEventArgs.cs" />
+    <Compile Include="FallingBlock.cs" />
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
@@ -132,6 +133,7 @@
     <Compile Include="HankGraphicProvider.cs" />
     <Compile Include="IGraphicProvider.cs" />
     <Compile Include="IInputHandler.cs" />
+    <Compile Include="IRandomNumberProvider.cs" />
     <Compile Include="KeyboardInputHandler.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
