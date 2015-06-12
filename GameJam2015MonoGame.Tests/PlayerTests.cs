@@ -143,12 +143,34 @@ namespace GameJam2015MonoGame.Tests
 
             simulator.JumpUntilLimit(maxJumpHeight);
             var player = simulator.Player;
-            var speed = player.Speed*2;
             var oldPosition = player.YPosition;
             player.Update();
 
             var currentPosition = player.YPosition;
-            Assert.AreEqual(oldPosition, currentPosition);
+            Assert.IsTrue(oldPosition <= currentPosition);
+        }
+
+        [TestMethod]
+        public void Player_YPositionDecreases_AfterJumpHeightLimitReached()
+        {
+            const int maxJumpHeight = -20;
+
+            var simulator = new PlayerJumpSimulator();
+
+            simulator.JumpUntilLimit(maxJumpHeight);
+            var player = simulator.Player;
+            var speed = player.Speed*2;
+
+            var oldPosition = player.YPosition;
+            player.Update();
+
+            var currentPosition = player.YPosition;
+            Assert.IsTrue(oldPosition < currentPosition, 
+                string.Format("{0} was not less than {1}.\nValue of {0} : {2}\nValue of {1} : {3}",
+                nameof(oldPosition), 
+                nameof(currentPosition),
+                oldPosition,
+                currentPosition));
         }
     }
 }

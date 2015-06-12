@@ -10,6 +10,7 @@ namespace GameJam2015MonoGame
         private readonly IGraphicProvider _graphicProvider;
         private bool _isJumping;
         private float _jumpStartHeight;
+        private bool _isDropping;
 
         public Player(IInputHandler inputHandler, IGraphicProvider graphicProvider)
         {
@@ -60,6 +61,20 @@ namespace GameJam2015MonoGame
             if (this._isJumping && this.YPosition > (this._jumpStartHeight - JumpHeightLimit))
             {
                 this.YPosition -= this.Speed*2;
+            }
+            else if (this._isJumping && this.YPosition <= this._jumpStartHeight - JumpHeightLimit)
+            {
+                this._isJumping = false;
+                this._isDropping = true;
+            }
+
+            if (this._isDropping && this.YPosition < this._jumpStartHeight)
+            {
+                this.YPosition += this.Speed;
+            }
+            else if (this._isDropping && this.YPosition >= this._jumpStartHeight)
+            {
+                this._isDropping = false;
             }
         }
 
