@@ -47,11 +47,13 @@ namespace GameJam2015MonoGame
             if (this._inputHandler.LeftPressed)
             {
                 this.XPosition -= this.Speed;
+                this.Facing = Facing.Left;
             }
 
             if (this._inputHandler.RightPressed)
             {
                 this.XPosition += this.Speed;
+                this.Facing = Facing.Right;
             }
 
             if (this._inputHandler.JumpPressed && !this._isJumping)

@@ -191,7 +191,39 @@ namespace GameJam2015MonoGame.Tests
             return player;
         }
 
-        
+        //Changes facing on turning right while facing left
+        [TestMethod]
+        public void Player_FacesRight_AfterTurningRight()
+        {
+            var fakeInputHandler = new FakeInputHandler();
+            var fakeGraphicsProvider = new FakeGraphicProvider();
+
+            var player = new Player(fakeInputHandler, fakeGraphicsProvider);
+            fakeInputHandler.LeftPressed = true;
+            player.Update();
+            fakeInputHandler.LeftPressed = false;
+            fakeInputHandler.RightPressed = true;
+            player.Update();
+
+            Assert.AreEqual(Facing.Right, player.Facing);
+        }
+
+        //Changes facing on turning left while facing right
+        [TestMethod]
+        public void Player_FacesLeft_AfterTurningLeft()
+        {
+            var fakeInputHandler = new FakeInputHandler();
+            var fakeGraphicsProvider = new FakeGraphicProvider();
+
+            var player = new Player(fakeInputHandler, fakeGraphicsProvider);
+            fakeInputHandler.RightPressed = true;
+            player.Update();
+            fakeInputHandler.RightPressed = false;
+            fakeInputHandler.LeftPressed = true;
+            player.Update();
+
+            Assert.AreEqual(Facing.Left, player.Facing);
+        }
 
         //Raises event when facing changes
 
