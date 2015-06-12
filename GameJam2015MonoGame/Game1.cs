@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Windows.UI.Xaml;
 using GameJam2015MonoGame.Actors.Block;
 using GameJam2015MonoGame.Actors.Player;
 using GameJam2015MonoGame.ContentLoaders;
@@ -98,12 +99,30 @@ namespace GameJam2015MonoGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+
             this._player.Update();
             foreach (var item in this._blocks)
             {
+                if (CollisionOccurred(this._player, item))
+                {
+                     this._player.IsDead = true;
+                }
                 item.Update();
             }
+
             base.Update(gameTime);
+        }
+
+        private bool CollisionOccurred(Player player, FallingBlock block)
+        {
+            Rectangle playerRectangle = new Rectangle((int)player.XPosition, (int)player.YPosition, (int)player.Width, (int)player.Height);
+            Rectangle enemyRectangle = new Rectangle((int)block.XPosition, (int)block.YPosition, (int)block.Width, (int)block.Height);
+            return playerRectangle.Intersects(enemyRectangle);
+        }
+
+        void ProcessCollisions()
+        {
+            
         }
 
         /// <summary>
@@ -119,6 +138,7 @@ namespace GameJam2015MonoGame
             {
                 block.Draw(drawer);
             }
+            
             this._player.Draw(drawer);
             this._spriteBatch.End();
             base.Draw(gameTime);

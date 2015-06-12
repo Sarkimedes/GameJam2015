@@ -32,7 +32,16 @@ namespace GameJam2015MonoGame.Actors.Player
             this._graphicProvider = graphicProvider;
             this.Speed = 1;
             this.Facing = Facing.Right;
+            this.IsDead = false;
         }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is dead.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is dead; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsDead { get; set; }
 
         public void LoadContent(IContentLoader loader)
         {
@@ -51,6 +60,11 @@ namespace GameJam2015MonoGame.Actors.Player
 
         public void Update()
         {
+            if (this.IsDead)
+            {
+                return;
+            }
+
             if (this._inputHandler.LeftPressed)
             {
                 this.XPosition -= this.Speed;
@@ -69,7 +83,6 @@ namespace GameJam2015MonoGame.Actors.Player
                     this.Facing = Facing.Right;
                     this.OnRaiseFacingChanged(new FacingChangedEventArgs(this.Facing));
                 }
-
             }
 
             if (this._inputHandler.JumpPressed && !this._isJumping && !this._isDropping)
@@ -103,6 +116,11 @@ namespace GameJam2015MonoGame.Actors.Player
             if (drawer == null)
             {
                 throw new ArgumentNullException(nameof(drawer));
+            }
+
+            if (this.IsDead)
+            {
+                return;
             }
 
             this._graphicProvider.Draw(this.XPosition, this.YPosition, drawer);

@@ -47,6 +47,7 @@ namespace GameJam2015MonoGame.Actors.Block
         public float Height => this._graphicProvider.GraphicHeight;
         public bool IsActive { get; private set; }
         public float Speed { get; private set; }
+        public float Width => this._graphicProvider.GraphicWidth;
 
         public void Update()
         {

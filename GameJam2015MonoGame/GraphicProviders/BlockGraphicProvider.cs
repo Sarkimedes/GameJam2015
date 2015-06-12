@@ -15,7 +15,7 @@ namespace GameJam2015MonoGame.GraphicProviders
         public float GraphicWidth {
             get
             {
-                if (this._texture2D == null)
+                if (this._texture2D != null)
                 {
                     return this._texture2D.Width;
                 }
@@ -27,7 +27,7 @@ namespace GameJam2015MonoGame.GraphicProviders
         {
             get
             {
-                if (this._texture2D == null)
+                if (this._texture2D != null)
                 {
                     return this._texture2D.Height;
                 }
