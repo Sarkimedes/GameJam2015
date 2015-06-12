@@ -93,5 +93,23 @@ namespace GameJam2015MonoGame.Tests
 
             Assert.AreEqual(1, provider.TimesLoadContentCalled);
         }
+
+        [TestMethod]
+        public void Player_YPositionIncreases_WhenJumpIsPressed()
+        {
+            var fakeInputHandler = new FakeInputHandler();
+            fakeInputHandler.JumpPressed = true;
+            var fakeGraphicProvider = new FakeGraphicProvider();
+
+            var player = new Player(fakeInputHandler, fakeGraphicProvider);
+            var startingYPosition = player.YPosition;
+            for (int expectedIncrease = 1; expectedIncrease <= 5; ++expectedIncrease)
+            {
+                var expectedPosition = startingYPosition + expectedIncrease;
+                player.Update();
+                var currentPosition = player.YPosition;
+                Assert.AreEqual(expectedPosition, currentPosition);
+            }
+        }
     }
 }

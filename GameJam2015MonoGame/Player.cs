@@ -46,9 +46,12 @@ namespace GameJam2015MonoGame
             {
                 this.XPosition += this.Speed;
             }
+
+            if (this._inputHandler.JumpPressed)
+            {
+                this.YPosition += this.Speed;
+            }
         }
-
-
 
         public void Draw()
         {
