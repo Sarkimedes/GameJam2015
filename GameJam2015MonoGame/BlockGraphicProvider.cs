@@ -1,4 +1,6 @@
-﻿namespace GameJam2015MonoGame
+﻿using System;
+
+namespace GameJam2015MonoGame
 {
     public class BlockGraphicProvider : IGraphicProvider
     {
@@ -15,6 +17,10 @@
 
         public void Draw(float xPosition, float yPosition, IGraphicDrawer drawer)
         {
+            if (drawer == null)
+            {
+                throw new ArgumentNullException(nameof(drawer));
+            }
             drawer.Draw(xPosition, yPosition);
         }
     }

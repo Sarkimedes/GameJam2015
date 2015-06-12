@@ -52,9 +52,9 @@ namespace GameJam2015MonoGame
             this._graphicProvider.LoadContent();
         }
 
-        public void Draw()
+        public void Draw(IGraphicDrawer drawer)
         {
-            this._graphicProvider.Draw(this.XPosition, this.YPosition, null);
+            this._graphicProvider.Draw(this.XPosition, this.YPosition, drawer);
         }
     }
 }

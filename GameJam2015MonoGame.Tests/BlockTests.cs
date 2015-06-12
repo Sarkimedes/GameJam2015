@@ -125,8 +125,8 @@ namespace GameJam2015MonoGame.Tests
         {
             var fakeGraphicProvider = new FakeGraphicProvider();
             var block = GenerateBlockWithFakes(fakeGraphicProvider);
-
-            block.Draw();
+            var fakeDrawer = new FakeGraphicDrawer();
+            block.Draw(fakeDrawer);
             Assert.AreEqual(1, fakeGraphicProvider.TimesDrawCalled);
         }
 
