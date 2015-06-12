@@ -233,7 +233,7 @@ namespace GameJam2015MonoGame.Tests
             var fakeGraphicsProvider = new FakeGraphicProvider();
             var player = new Player(fakeInputHandler, fakeGraphicsProvider);
             Facing newFacing = Facing.Right;
-            player.FacingChanged += (object sender, FacingChangedEventArgs e) => newFacing = Facing.Left;
+            player.FacingChanged += (object sender, FacingChangedEventArgs e) => newFacing = e.NewFacing;
 
             fakeInputHandler.RightPressed = true;
             player.Update();
@@ -242,6 +242,24 @@ namespace GameJam2015MonoGame.Tests
             player.Update();
 
             Assert.AreEqual(Facing.Left, newFacing);
+        }
+
+        [TestMethod]
+        public void Player_RaisesEvent_AfterTurningRight()
+        {
+            var fakeInputHandler = new FakeInputHandler();
+            var fakeGraphicsProvider = new FakeGraphicProvider();
+            var player = new Player(fakeInputHandler, fakeGraphicsProvider);
+            Facing newFacing = Facing.Left;
+            player.FacingChanged += (sender, e) => newFacing = e.NewFacing;
+
+            fakeInputHandler.LeftPressed = true;
+            player.Update();
+            fakeInputHandler.LeftPressed = false;
+            fakeInputHandler.RightPressed = true;
+            player.Update();
+
+            Assert.AreEqual(Facing.Right, newFacing);
         }
 
         //Does not raise event when facing doesn't change
