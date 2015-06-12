@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameJam2015MonoGame.Tests.Fakes;
 
 namespace GameJam2015MonoGame.Tests
 {

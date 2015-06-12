@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+﻿using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 
-namespace GameJam2015MonoGame.Tests
+namespace GameJam2015MonoGame.Tests.Fakes
 {
     [TestClass]
     public class FakeInputHandlerTests

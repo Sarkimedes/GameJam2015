@@ -116,11 +116,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlockTests.cs" />
-    <Compile Include="FakeGraphicProvider.cs" />
-    <Compile Include="FakeGraphicProviderTests.cs" />
-    <Compile Include="FakeInputHandler.cs" />
-    <Compile Include="FakeInputHandlerTests.cs" />
-    <Compile Include="FakeRandomProvider.cs" />
+    <Compile Include="Fakes\FakeGraphicProvider.cs" />
+    <Compile Include="Fakes\FakeGraphicProviderTests.cs" />
+    <Compile Include="Fakes\FakeInputHandler.cs" />
+    <Compile Include="Fakes\FakeInputHandlerTests.cs" />
+    <Compile Include="Fakes\FakeRandomProvider.cs" />
     <Compile Include="PlayerJumpSimulator.cs" />
     <Compile Include="PlayerJumpSimulatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
