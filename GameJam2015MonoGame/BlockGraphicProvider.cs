@@ -17,6 +17,11 @@ namespace GameJam2015MonoGame
         public float GraphicHeight => this._texture2D.Height;
         public void LoadContent(IContentLoader loader)
         {
+            if (loader == null)
+            {
+                throw new ArgumentNullException(nameof(loader));
+            }
+
             loader.LoadContent<Texture2D>(TexturePath);
         }
 

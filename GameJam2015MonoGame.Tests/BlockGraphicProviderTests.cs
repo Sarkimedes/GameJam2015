@@ -40,5 +40,15 @@ namespace GameJam2015MonoGame.Tests
 
             Assert.AreEqual(1, ((FakeContentLoader)loader).TimesLoadCalled);
         }
+
+        [TestMethod]
+        public void BlockGraphicProvider_ThrowsException_WhenNullContentLoaderIsPassedIn()
+        {
+            var blockGraphicProvider = new BlockGraphicProvider();
+            Assert.ThrowsException<ArgumentNullException>(() =>
+            {
+                blockGraphicProvider.LoadContent(null);
+            });
+        }
     }
 }

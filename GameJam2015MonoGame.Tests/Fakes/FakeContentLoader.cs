@@ -1,4 +1,4 @@
-﻿namespace GameJam2015MonoGame.Tests
+﻿namespace GameJam2015MonoGame.Tests.Fakes
 {
     public class FakeContentLoader : IContentLoader
     {
