@@ -18,6 +18,10 @@ namespace GameJam2015MonoGame
             {
                 throw new ArgumentNullException(nameof(rng));
             }
+            if (limiter == null)
+            {
+                throw new ArgumentNullException(nameof(limiter));
+            }
 
             this._graphicProvider = graphicProvider;
             this._rng = rng;

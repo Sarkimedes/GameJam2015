@@ -81,5 +81,17 @@ namespace GameJam2015MonoGame.Tests
 
             Assert.IsTrue(block.IsActive);
         }
+
+        [TestMethod]
+        public void FallingBlock_ThrowsException_IfGivenNullLimiter()
+        {
+            IRandomNumberProvider rng = new FakeRandomProvider();
+            IGraphicProvider fakeGraphicProvider = new FakeGraphicProvider();
+
+            Assert.ThrowsException<ArgumentNullException>(() =>
+            {
+                var block = new FallingBlock(fakeGraphicProvider, rng, null);
+            });
+        }
     }
 }
