@@ -49,7 +49,7 @@ namespace GameJam2015MonoGame
 
             if (this._inputHandler.JumpPressed)
             {
-                this.YPosition += this.Speed;
+                this.YPosition += this.Speed*2;
             }
         }
 

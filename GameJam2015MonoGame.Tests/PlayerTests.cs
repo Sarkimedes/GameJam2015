@@ -103,13 +103,22 @@ namespace GameJam2015MonoGame.Tests
 
             var player = new Player(fakeInputHandler, fakeGraphicProvider);
             var startingYPosition = player.YPosition;
-            for (int expectedIncrease = 1; expectedIncrease <= 5; ++expectedIncrease)
-            {
-                var expectedPosition = startingYPosition + expectedIncrease;
-                player.Update();
-                var currentPosition = player.YPosition;
-                Assert.AreEqual(expectedPosition, currentPosition);
-            }
+
+            var expectedIncrement = player.Speed*2;
+
+            player.Update();
+
+            var expectedYPosition = startingYPosition + expectedIncrement;
+            var currentYPosition = player.YPosition;
+            
+            //Check player's position has increased
+            Assert.AreEqual(expectedIncrement, currentYPosition);
+        }
+
+        [TestMethod]
+        public void Player_YPositionContinuesIncreasing_AfterJumpIsReleased()
+        {
+
         }
     }
 }
