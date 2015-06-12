@@ -5,6 +5,7 @@ namespace GameJam2015MonoGame
 {
     public class BlockGraphicProvider : IGraphicProvider
     {
+        private static readonly string TexturePath = "Images\\block.xnb";
 
         private Texture2D _texture2D;
 
@@ -16,7 +17,7 @@ namespace GameJam2015MonoGame
         public float GraphicHeight => this._texture2D.Height;
         public void LoadContent()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public void Draw(float xPosition, float yPosition, IGraphicDrawer drawer)
