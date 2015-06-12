@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Xna.Framework;
 
 namespace GameJam2015MonoGame
 {
@@ -7,6 +8,7 @@ namespace GameJam2015MonoGame
         private IRandomNumberProvider _rng;
         private readonly IGraphicProvider _graphicProvider;
         private readonly IBlockLimiter _limiter;
+       
 
         public FallingBlock(IGraphicProvider graphicProvider, IRandomNumberProvider rng, IBlockLimiter limiter)
         {
@@ -27,9 +29,14 @@ namespace GameJam2015MonoGame
             this._rng = rng;
             this._limiter = limiter;
             this.IsActive = true;
-            this.Speed = this._rng.GetRandomFloat() + 1;
-            this.XPosition = this._rng.GetRandomNumber(400, 900);
-            this.YPosition = this._rng.GetRandomNumber(100, 200);
+            SetStartPosition();
+        }
+
+        public void SetStartPosition()
+        {
+            this.Speed = 0.5f;
+            this.XPosition = this._rng.GetRandomNumber(400, 1200);
+            this.YPosition = this._rng.GetRandomNumber(100, 500);
         }
 
         public float XPosition { get; set; }
@@ -40,9 +47,12 @@ namespace GameJam2015MonoGame
 
         public void Update()
         {
+            this.IsActive = true;
+
             if (this._limiter.IsPastLimit(this.YPosition))
             {
                 this.IsActive = false;
+                this.SetStartPosition();
             }
 
             this.YPosition += this.Speed;
@@ -55,7 +65,10 @@ namespace GameJam2015MonoGame
 
         public void Draw(IGraphicDrawer drawer)
         {
-            this._graphicProvider.Draw(this.XPosition, this.YPosition, drawer);
+            if (this.IsActive)
+            {
+                this._graphicProvider.Draw(this.XPosition, this.YPosition, drawer);
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ namespace GameJam2015MonoGame
 {
     public class Player
     {
-        private static readonly float JumpHeightLimit = 20;
+        private static readonly float JumpHeightLimit = 70;
 
         private readonly IInputHandler _inputHandler;
         private readonly IGraphicProvider _graphicProvider;

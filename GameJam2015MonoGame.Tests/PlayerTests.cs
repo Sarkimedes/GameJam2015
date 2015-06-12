@@ -142,7 +142,7 @@ namespace GameJam2015MonoGame.Tests
         [TestMethod]
         public void Player_YPositionDoesNotIncrease_AfterJumpingAndHittingALimit()
         {
-            const int maxJumpHeight = -20;
+            const int maxJumpHeight = -70;
 
             var simulator = new PlayerJumpSimulator();
 
@@ -158,7 +158,7 @@ namespace GameJam2015MonoGame.Tests
         [TestMethod]
         public void Player_YPositionDecreases_AfterJumpHeightLimitReached()
         {
-            const int maxJumpHeight = -20;
+            const int maxJumpHeight = -70;
 
             var simulator = new PlayerJumpSimulator();
 

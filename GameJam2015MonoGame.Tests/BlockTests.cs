@@ -105,10 +105,10 @@ namespace GameJam2015MonoGame.Tests
         }
 
         [TestMethod]
-        public void FallingBlock_SpeedIsRandomised_ByDefault()
+        public void FallingBlock_DefaultSpeed_ByDefault()
         {
             var block = GenerateBlockWithFakes();
-            Assert.AreEqual(FakeRandomProvider.DefaultValue + 1, block.Speed);
+            Assert.AreEqual(0.5f, block.Speed);
         }
 
         [TestMethod]
