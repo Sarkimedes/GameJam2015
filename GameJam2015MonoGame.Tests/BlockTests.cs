@@ -26,13 +26,19 @@ namespace GameJam2015MonoGame.Tests
         [TestMethod]
         public void FallingBlock_BlockPositionIsTopOfGraphicsDevice_ByDefault()
         {
+            var block = GenerateBlockWithDefaultFakes();
+            var expectedYPosition = block.Height;
+            Assert.AreEqual(expectedYPosition, block.YPosition);
+        }
+
+        private static FallingBlock GenerateBlockWithDefaultFakes()
+        {
             IRandomNumberProvider rng = new FakeRandomProvider();
             IGraphicProvider fakeGraphicProvider = new FakeGraphicProvider();
             IBlockLimiter limiter = new FakeBlockLimiter();
-            
+
             var block = new FallingBlock(fakeGraphicProvider, rng, limiter);
-            var expectedYPosition = block.Height;
-            Assert.AreEqual(expectedYPosition, block.YPosition);
+            return block;
         }
 
         [TestMethod]
@@ -92,6 +98,19 @@ namespace GameJam2015MonoGame.Tests
             {
                 var block = new FallingBlock(fakeGraphicProvider, rng, null);
             });
+        }
+
+        [TestMethod]
+        public void FallingBlock_Falls_WhileUpdating()
+        {
+            var block = GenerateBlockWithDefaultFakes();
+            var originalYPosition = block.YPosition;
+            var speed = block.Speed;
+
+            block.Update();
+
+            var expectedYPosition = originalYPosition - block.Speed;
+            Assert.AreEqual(expectedYPosition, block.YPosition);
         }
     }
 }

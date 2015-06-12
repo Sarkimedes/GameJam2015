@@ -35,6 +35,7 @@ namespace GameJam2015MonoGame
         public float YPosition { get; set; }
         public float Height => this._graphicProvider.GraphicHeight;
         public bool IsActive { get; private set; }
+        public double Speed { get; private set; }
 
         public void Update()
         {
