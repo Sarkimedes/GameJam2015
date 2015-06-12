@@ -31,15 +31,6 @@ namespace GameJam2015MonoGame.Tests
             Assert.AreEqual(expectedYPosition, block.YPosition);
         }
 
-        private static FallingBlock GenerateBlockWithFakes()
-        {
-            IRandomNumberProvider fakeRandomProvider = new FakeRandomProvider();
-            IGraphicProvider fakeGraphicProvider = new FakeGraphicProvider();
-            IBlockLimiter fakeBlockLimiter = new FakeBlockLimiter();
-            var block = new FallingBlock(fakeGraphicProvider, fakeRandomProvider, fakeBlockLimiter);
-            return block;
-        }
-
         [TestMethod]
         public void FallingBlock_ThrowsArgumentNullExpception_IfGivenNullRandomNumberProvider()
         {
@@ -127,6 +118,25 @@ namespace GameJam2015MonoGame.Tests
 
             block.LoadContent();
             Assert.AreEqual(1, fakeGraphicProvider.TimesLoadContentCalled);
+        }
+
+        [TestMethod]
+        public void FallingBlock_CallsDraw_FromGraphicProvider()
+        {
+            var fakeGraphicProvider = new FakeGraphicProvider();
+            var block = GenerateBlockWithFakes(fakeGraphicProvider);
+
+            block.Draw();
+            Assert.AreEqual(1, fakeGraphicProvider.TimesDrawCalled);
+        }
+
+        private FallingBlock GenerateBlockWithFakes()
+        {
+            IRandomNumberProvider fakeRandomProvider = new FakeRandomProvider();
+            IGraphicProvider fakeGraphicProvider = new FakeGraphicProvider();
+            IBlockLimiter fakeBlockLimiter = new FakeBlockLimiter();
+            var block = new FallingBlock(fakeGraphicProvider, fakeRandomProvider, fakeBlockLimiter);
+            return block;
         }
 
         private FallingBlock GenerateBlockWithFakes(FakeGraphicProvider fakeGraphicProvider)

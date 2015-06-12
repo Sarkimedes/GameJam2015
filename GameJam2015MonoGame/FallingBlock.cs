@@ -51,5 +51,10 @@ namespace GameJam2015MonoGame
         {
             this._graphicProvider.LoadContent();
         }
+
+        public void Draw()
+        {
+            this._graphicProvider.Draw(this.XPosition, this.YPosition);
+        }
     }
 }
