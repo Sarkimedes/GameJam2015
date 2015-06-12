@@ -48,6 +48,8 @@ namespace GameJam2015MonoGame
             this._inputHandler = new KeyboardInputHandler();
             this._player = new Player(this._inputHandler, this._hankGraphicProvider);
             this._player.LoadContent();
+            this._player.YPosition = this.GraphicsDevice.Viewport.Height - (this._player.Height * 2);
+            this._player.XPosition = this.GraphicsDevice.Viewport.Width/2;
             // TODO: use this.Content to load your game content here
         }
 

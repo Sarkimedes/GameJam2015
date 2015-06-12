@@ -10,6 +10,9 @@
 
         public int TimesLoadContentCalled { get; private set; }
 
+        public float GraphicWidth { get; }
+        public float GraphicHeight { get; }
+
         public void LoadContent()
         {
             TimesLoadContentCalled++;

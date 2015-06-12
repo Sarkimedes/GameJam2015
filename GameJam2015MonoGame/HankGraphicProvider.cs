@@ -32,6 +32,30 @@ namespace GameJam2015MonoGame
         public SpriteBatch SpriteBatch { get; set; }
 
 
+        public float GraphicWidth
+        {
+            get
+            {
+                if (this._texture != null)
+                {
+                    return this._texture.Width;
+                }
+                return 0;
+            }
+        }
+
+        public float GraphicHeight
+        {
+            get
+            {
+                if (this._texture != null)
+                {
+                    return this._texture.Height;
+                }
+                return 0;
+            }
+        }
+
         public void LoadContent()
         {
             this._texture = this._contentManager.Load<Texture2D>(TexturePath);

@@ -36,6 +36,9 @@ namespace GameJam2015MonoGame
             this._graphicProvider.LoadContent();
         }
 
+        public float Width => this._graphicProvider.GraphicWidth;
+        public float Height => this._graphicProvider.GraphicHeight;
+
         public float XPosition { get; set; }
 
         public float YPosition { get; set; }

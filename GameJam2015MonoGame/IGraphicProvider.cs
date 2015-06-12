@@ -4,6 +4,22 @@ namespace GameJam2015MonoGame
 {
     public interface IGraphicProvider
     {
+        /// <summary>
+        /// Gets the width of the graphic.
+        /// </summary>
+        /// <value>
+        /// The width of the graphic.
+        /// </value>
+        float GraphicWidth { get; }
+
+        /// <summary>
+        /// Gets the height of the graphic.
+        /// </summary>
+        /// <value>
+        /// The height of the graphic.
+        /// </value>
+        float GraphicHeight { get; }
+
         void LoadContent();
 
         void Draw(float xPosition, float yPosition);
