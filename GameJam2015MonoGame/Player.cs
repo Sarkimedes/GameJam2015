@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows.ApplicationModel.VoiceCommands;
 
 namespace GameJam2015MonoGame
 {
@@ -47,7 +48,11 @@ namespace GameJam2015MonoGame
             if (this._inputHandler.LeftPressed)
             {
                 this.XPosition -= this.Speed;
-                this.Facing = Facing.Left;
+                if (this.Facing == Facing.Right)
+                {
+                    this.Facing = Facing.Left;
+                    this.OnRaiseFacingChanged(new FacingChangedEventArgs(this.Facing));
+                }
             }
 
             if (this._inputHandler.RightPressed)
@@ -85,6 +90,15 @@ namespace GameJam2015MonoGame
         public void Draw()
         {
             this._graphicProvider.Draw(this.XPosition, this.YPosition);
+        }
+
+        public event EventHandler<FacingChangedEventArgs> FacingChanged;
+
+        protected virtual void OnRaiseFacingChanged(FacingChangedEventArgs e)
+        {
+            EventHandler<FacingChangedEventArgs> handler = FacingChanged;
+
+            handler?.Invoke(this, e);
         }
     }
 }

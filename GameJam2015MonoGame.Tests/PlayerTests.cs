@@ -226,6 +226,23 @@ namespace GameJam2015MonoGame.Tests
         }
 
         //Raises event when facing changes
+        [TestMethod]
+        public void Player_RaisesEvent_AfterTurningLeft()
+        {
+            var fakeInputHandler = new FakeInputHandler();
+            var fakeGraphicsProvider = new FakeGraphicProvider();
+            var player = new Player(fakeInputHandler, fakeGraphicsProvider);
+            Facing newFacing = Facing.Right;
+            player.FacingChanged += (object sender, FacingChangedEventArgs e) => newFacing = Facing.Left;
+
+            fakeInputHandler.RightPressed = true;
+            player.Update();
+            fakeInputHandler.RightPressed = false;
+            fakeInputHandler.LeftPressed = true;
+            player.Update();
+
+            Assert.AreEqual(Facing.Left, newFacing);
+        }
 
         //Does not raise event when facing doesn't change
     }
