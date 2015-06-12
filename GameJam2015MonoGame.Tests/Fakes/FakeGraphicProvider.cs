@@ -1,4 +1,6 @@
-﻿namespace GameJam2015MonoGame.Tests.Fakes
+﻿using GameJam2015MonoGame.GraphicProviders;
+
+namespace GameJam2015MonoGame.Tests.Fakes
 {
     internal class FakeGraphicProvider : IGraphicProvider
     {

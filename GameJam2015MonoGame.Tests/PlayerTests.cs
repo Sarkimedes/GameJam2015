@@ -1,6 +1,7 @@
 ﻿using System;
 using Windows.Devices.Bluetooth.Advertisement;
 using Windows.Foundation.Metadata;
+using GameJam2015MonoGame.GraphicProviders;
 using GameJam2015MonoGame.Tests.Fakes;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 

@@ -1,7 +1,8 @@
 ﻿using System;
+using Windows.UI.Notifications;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameJam2015MonoGame
+namespace GameJam2015MonoGame.GraphicProviders
 {
     public class BlockGraphicProvider : IGraphicProvider
     {
@@ -9,12 +10,28 @@ namespace GameJam2015MonoGame
 
         private Texture2D _texture2D;
 
-        public BlockGraphicProvider()
-        {
+        public float GraphicWidth {
+            get
+            {
+                if (this._texture2D == null)
+                {
+                    return this._texture2D.Width;
+                }
+                return 0;
+            }
         }
 
-        public float GraphicWidth => this._texture2D.Width;
-        public float GraphicHeight => this._texture2D.Height;
+        public float GraphicHeight
+        {
+            get
+            {
+                if (this._texture2D == null)
+                {
+                    return this._texture2D.Height;
+                }
+                return 0;
+            }
+        }
         public void LoadContent(IContentLoader loader)
         {
             if (loader == null)
@@ -31,9 +48,10 @@ namespace GameJam2015MonoGame
             {
                 throw new ArgumentNullException(nameof(drawer));
             }
-            if (drawer is SpriteBatchGraphicDrawer)
+            var spriteBatchGraphicDrawer = drawer as SpriteBatchGraphicDrawer;
+            if (spriteBatchGraphicDrawer != null)
             {
-                ((SpriteBatchGraphicDrawer) drawer).TextureToDraw = this._texture2D;
+                spriteBatchGraphicDrawer.TextureToDraw = this._texture2D;
             }
             drawer.Draw(xPosition, yPosition);
         }

@@ -123,7 +123,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BlockGraphicProvider.cs" />
+    <Compile Include="GraphicProviders\BlockGraphicProvider.cs" />
     <Compile Include="ContentManagerLoader.cs" />
     <Compile Include="Facing.cs" />
     <Compile Include="FacingChangedEventArgs.cs" />
@@ -132,11 +132,11 @@
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game1.cs" />
-    <Compile Include="HankGraphicProvider.cs" />
+    <Compile Include="GraphicProviders\HankGraphicProvider.cs" />
     <Compile Include="IBlockLimiter.cs" />
     <Compile Include="IContentLoader.cs" />
     <Compile Include="IGraphicDrawer.cs" />
-    <Compile Include="IGraphicProvider.cs" />
+    <Compile Include="GraphicProviders\IGraphicProvider.cs" />
     <Compile Include="IInputHandler.cs" />
     <Compile Include="IRandomNumberProvider.cs" />
     <Compile Include="KeyboardInputHandler.cs" />
@@ -190,6 +190,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Actors\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace GameJam2015MonoGame
+﻿namespace GameJam2015MonoGame.GraphicProviders
 {
     public interface IGraphicProvider
     {

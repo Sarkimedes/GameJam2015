@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GameJam2015MonoGame.GraphicProviders;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -41,7 +42,6 @@ namespace GameJam2015MonoGame
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             for (int i = 0; i < NumberOfBlocks; ++i)
             {
                 //Add blocks in here
@@ -63,20 +63,18 @@ namespace GameJam2015MonoGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            this._hankGraphicProvider = new HankGraphicProvider(this._spriteBatch, Content);
+            this._hankGraphicProvider = new HankGraphicProvider();
             this._inputHandler = new KeyboardInputHandler();
             this._player = new Player(this._inputHandler, this._hankGraphicProvider);
             ContentManagerLoader loader = new ContentManagerLoader(this.Content);
             this._player.LoadContent(loader);
             this._player.YPosition = this.GraphicsDevice.Viewport.Height - (this._player.Height * 4);
             this._player.XPosition = this.GraphicsDevice.Viewport.Width/2;
-            this._player.FacingChanged += (sender, e) =>
-                this._hankGraphicProvider.HandlePlayerFacingChange(sender, e);
+            this._player.FacingChanged += (sender, e) => this._hankGraphicProvider.HandlePlayerFacingChange(sender, e);
             foreach (var block in _blocks)
             {
                 block.LoadContent(loader);
             }
-            // TODO: use this.Content to load your game content here
         }
 
         /// <summary>
@@ -95,7 +93,6 @@ namespace GameJam2015MonoGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // TODO: Add your update logic here
             this._player.Update();
             foreach (var item in this._blocks)
             {

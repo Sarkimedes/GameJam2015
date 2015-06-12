@@ -1,5 +1,6 @@
 ﻿using System;
 using Windows.ApplicationModel.VoiceCommands;
+using GameJam2015MonoGame.GraphicProviders;
 
 namespace GameJam2015MonoGame
 {
