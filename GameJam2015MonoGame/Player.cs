@@ -27,6 +27,7 @@ namespace GameJam2015MonoGame
             this._inputHandler = inputHandler;
             this._graphicProvider = graphicProvider;
             this.Speed = 1;
+            this.Facing = Facing.Right;
         }
 
         public void LoadContent()
@@ -39,6 +40,7 @@ namespace GameJam2015MonoGame
         public float YPosition { get; set; }
 
         public float Speed { get; set; }
+        public Facing Facing { get; set; }
 
         public void Update()
         {

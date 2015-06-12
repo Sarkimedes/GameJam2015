@@ -1,4 +1,6 @@
 ﻿using System;
+using Windows.Devices.Bluetooth.Advertisement;
+using Windows.Foundation.Metadata;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 
 namespace GameJam2015MonoGame.Tests
@@ -159,7 +161,6 @@ namespace GameJam2015MonoGame.Tests
 
             simulator.JumpUntilLimit(maxJumpHeight);
             var player = simulator.Player;
-            var speed = player.Speed*2;
 
             var oldPosition = player.YPosition;
             player.Update();
@@ -172,5 +173,28 @@ namespace GameJam2015MonoGame.Tests
                 oldPosition,
                 currentPosition));
         }
+
+        //Faces right by default
+        [TestMethod]
+        public void Player_FacesRight_ByDefault()
+        {
+            var player = CreateDefaultPlayer();
+            Assert.AreEqual(Facing.Right, player.Facing);
+        }
+
+        private static Player CreateDefaultPlayer()
+        {
+            var fakeInputHandler = new FakeInputHandler();
+            var fakeGraphicsProvider = new FakeGraphicProvider();
+
+            var player = new Player(fakeInputHandler, fakeGraphicsProvider);
+            return player;
+        }
+
+        
+
+        //Raises event when facing changes
+
+        //Does not raise event when facing doesn't change
     }
 }
