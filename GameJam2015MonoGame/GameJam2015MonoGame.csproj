@@ -131,6 +131,7 @@
     </Compile>
     <Compile Include="Game1.cs" />
     <Compile Include="HankGraphicProvider.cs" />
+    <Compile Include="IBlockLimiter.cs" />
     <Compile Include="IGraphicProvider.cs" />
     <Compile Include="IInputHandler.cs" />
     <Compile Include="IRandomNumberProvider.cs" />

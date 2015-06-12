@@ -6,8 +6,9 @@ namespace GameJam2015MonoGame
     {
         private IRandomNumberProvider _rng;
         private readonly IGraphicProvider _graphicProvider;
+        private readonly IBlockLimiter _limiter;
 
-        public FallingBlock(IGraphicProvider graphicProvider, IRandomNumberProvider rng)
+        public FallingBlock(IGraphicProvider graphicProvider, IRandomNumberProvider rng, IBlockLimiter limiter)
         {
             if (graphicProvider == null)
             {
@@ -20,6 +21,8 @@ namespace GameJam2015MonoGame
 
             this._graphicProvider = graphicProvider;
             this._rng = rng;
+            this._limiter = limiter;
+            this.IsActive = true;
 
             this.XPosition = this._rng.GetRandomNumber();
         }
@@ -27,5 +30,14 @@ namespace GameJam2015MonoGame
         public float XPosition { get; set; }
         public float YPosition { get; set; }
         public float Height => this._graphicProvider.GraphicHeight;
+        public bool IsActive { get; private set; }
+
+        public void Update()
+        {
+            if (this._limiter.IsPastLimit(this.YPosition))
+            {
+                this.IsActive = false;
+            }
+        }
     }
 }

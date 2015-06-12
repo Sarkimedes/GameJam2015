@@ -16,9 +16,10 @@ namespace GameJam2015MonoGame.Tests
         {
             IRandomNumberProvider rng = new FakeRandomProvider();
             IGraphicProvider fakeGraphicProvider = new FakeGraphicProvider();
+            IBlockLimiter limiter = new FakeBlockLimiter();
             var number = rng.GetRandomNumber();
 
-            var block = new FallingBlock(fakeGraphicProvider, rng);
+            var block = new FallingBlock(fakeGraphicProvider, rng, limiter);
             Assert.AreEqual(number, block.XPosition);
         }
 
@@ -27,8 +28,9 @@ namespace GameJam2015MonoGame.Tests
         {
             IRandomNumberProvider rng = new FakeRandomProvider();
             IGraphicProvider fakeGraphicProvider = new FakeGraphicProvider();
+            IBlockLimiter limiter = new FakeBlockLimiter();
             
-            var block = new FallingBlock(fakeGraphicProvider, rng);
+            var block = new FallingBlock(fakeGraphicProvider, rng, limiter);
             var expectedYPosition = block.Height;
             Assert.AreEqual(expectedYPosition, block.YPosition);
         }
@@ -37,10 +39,11 @@ namespace GameJam2015MonoGame.Tests
         public void FallingBlock_ThrowsArgumentNullExpception_IfGivenNullRandomNumberProvider()
         {
             IGraphicProvider fakeGraphicProvider = new FakeGraphicProvider();
+            IBlockLimiter limiter = new FakeBlockLimiter();
 
             Assert.ThrowsException<ArgumentNullException>(() =>
             {
-                var block = new FallingBlock(fakeGraphicProvider, null);
+                var block = new FallingBlock(fakeGraphicProvider, null, limiter);
             });
         }
 
@@ -48,11 +51,35 @@ namespace GameJam2015MonoGame.Tests
         public void FallingBlock_ThrowsArgumentNullException_IfGivenNullGraphicProvider()
         {
             IRandomNumberProvider rng = new FakeRandomProvider();
+            IBlockLimiter limiter = new FakeBlockLimiter();
 
             Assert.ThrowsException<ArgumentNullException>(() =>
             {
-                var block = new FallingBlock(null, rng);
+                var block = new FallingBlock(null, rng, limiter);
             });
+        }
+
+        [TestMethod]
+        public void FallingBlock_IsDeactivated_OnceItReachesALimit()
+        {
+            IRandomNumberProvider rng = new FakeRandomProvider();
+            IGraphicProvider fakeGraphicProvider = new FakeGraphicProvider();
+            IBlockLimiter blockLimiter = new FakeBlockLimiter() {PastLimitValue = true};
+            var block = new FallingBlock(fakeGraphicProvider, rng, blockLimiter);
+
+            block.Update();
+            Assert.IsFalse(block.IsActive);
+        }
+
+        [TestMethod]
+        public void FallingBlock_IsActive_WhenCreated()
+        {
+            IRandomNumberProvider rng = new FakeRandomProvider();
+            IGraphicProvider fakeGraphicProvider = new FakeGraphicProvider();
+            IBlockLimiter blockLimiter = new FakeBlockLimiter();
+            var block = new FallingBlock(fakeGraphicProvider, rng, blockLimiter);
+
+            Assert.IsTrue(block.IsActive);
         }
     }
 }

@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlockTests.cs" />
+    <Compile Include="Fakes\FakeBlockLimiter.cs" />
     <Compile Include="Fakes\FakeGraphicProvider.cs" />
     <Compile Include="Fakes\FakeGraphicProviderTests.cs" />
     <Compile Include="Fakes\FakeInputHandler.cs" />
