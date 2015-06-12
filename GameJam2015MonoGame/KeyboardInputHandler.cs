@@ -13,7 +13,15 @@ namespace GameJam2015MonoGame
     {
         public bool JumpPressed
         {
-            get; set; }
+            get { return IsJumpDown(); }
+            set { }
+        }
+
+        private bool IsJumpDown()
+        {
+            var keyboardState = Keyboard.GetState();
+            return keyboardState.IsKeyDown(Keys.Space);
+        }
 
         private bool IsLeftDown()
         {

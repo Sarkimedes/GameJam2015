@@ -95,7 +95,7 @@ namespace GameJam2015MonoGame.Tests
         }
 
         [TestMethod]
-        public void Player_YPositionIncreases_WhenJumpIsPressed()
+        public void Player_YPositionDecreases_WhenJumpIsPressed()
         {
             var fakeInputHandler = new FakeInputHandler();
             fakeInputHandler.JumpPressed = true;
@@ -104,21 +104,21 @@ namespace GameJam2015MonoGame.Tests
             var player = new Player(fakeInputHandler, fakeGraphicProvider);
             var startingYPosition = player.YPosition;
 
-            var expectedIncrement = player.Speed*2;
+            var expectedDecrement = player.Speed*2;
 
             player.Update();
 
-            var expectedYPosition = startingYPosition + expectedIncrement;
+            var expectedYPosition = startingYPosition - expectedDecrement;
             var currentYPosition = player.YPosition;
             
             //Check player's position has increased
-            Assert.AreEqual(expectedIncrement, currentYPosition);
+            Assert.AreEqual(expectedYPosition, currentYPosition);
         }
 
         [TestMethod]
         public void Player_YPositionContinuesIncreasing_AfterJumpIsReleased()
         {
-
+            
         }
     }
 }
